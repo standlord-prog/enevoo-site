@@ -89,4 +89,19 @@
     modal.addEventListener('click', function (e) { if (e.target === modal || e.target.closest('.x')) modal.classList.remove('on'); });
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape') modal.classList.remove('on'); });
   }
+
+  /* Яндекс Метрика 113664779 — только на enevoo.com, после загрузки страницы (не тормозит показ), без Вебвизора */
+  var YM = 113664779;
+  if (/^(www\.)?enevoo\.com$/.test(location.hostname)) {
+    window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+    window.ym.l = Date.now();
+    window.ym(YM, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true });
+    var go = function () { var s = d.createElement('script'); s.async = true; s.src = 'https://mc.yandex.ru/metrika/tag.js'; d.head.appendChild(s); };
+    if (d.readyState === 'complete') go(); else window.addEventListener('load', go);
+  }
+  /* цель «переход в Ozon Селект»: кнопка «купить», размер, окно с QR */
+  d.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-select], a[href*="select.ozon.ru"], a[href*="se.ozon.ru"]');
+    if (a && window.ym) window.ym(YM, 'reachGoal', 'ozon_select_click');
+  }, true);
 })();
