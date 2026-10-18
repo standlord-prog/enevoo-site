@@ -23,12 +23,6 @@
     setTimeout(function () { i.src = ''; i.src = u; }, 1500);
   }, true);
 
-  /* видео первого экрана — только на компьютере, на телефоне остаётся фото */
-  var v = d.querySelector('.hero video[data-src]');
-  if (v && window.matchMedia('(min-width:901px)').matches && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
-    v.src = v.getAttribute('data-src'); v.hidden = false; v.play && v.play().catch(function () {});
-  }
-
   /* фильтры раздела: размер, цвет, сортировка; состояние — в адресе */
   var grid = d.querySelector('.grid[data-filter]');
   if (grid) {
